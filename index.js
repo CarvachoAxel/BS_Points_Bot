@@ -33,9 +33,12 @@ printData("rankings_titles", rankings_titles)
 
 fs.readdir('./events/', (err, files) => {
   files.forEach(file => {
+    console.log("print en fs.readdir 0")
     const eventHandler = require(`./events/${file}`)
     const eventName = file.split('.')[0]
+    console.log("print en fs.readdir 1")
     client.on(eventName, (...args) => eventHandler(client, scores, rankings_links, rankings_titles, ...args));
+    console.log("print en fs.readdir 2")
   })
 })
 
