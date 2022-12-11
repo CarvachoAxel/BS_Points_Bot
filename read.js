@@ -1,63 +1,51 @@
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
-const data_file = './db/scores_data.json'
-const fs = require('fs')
-const save = require('./save')
-const addPoints = require('./commands/addPoints')
 
+function printData(name, data) {
+    console.log(`### begin ${name}`);
+    console.log(data);
+    console.log(`### end ${name}`);
+}
 
 function createScores(data)
 {
     var scores = new Map()
 
-    console.log("### begin data")
-    console.log(data)
-    console.log("### end data")
+    printData("data", data)
     var parsed = JSON.parse(data).record
-    console.log("### Begin parsed")
-    console.log(parsed)
-    console.log("### end parsed")
+    printData("parsed", parsed)
 
     var guilds = Object.keys(parsed);
-    // console.log("guilds = " + guilds)
+    printData("guilds", guilds)
 
     for( var i = 0,length = guilds.length; i < length; i++ ) {
         let guild = parsed[ guilds[ i ] ]
         let rankings = Object.keys(guild)
-        // console.log("rankings = " + rankings)
+        printData("rankings", rankings)
 
         let guildId = guilds[i]
-        // console.log("guildId = " + guildId)
+        printData("guildId", guildId)
         scores.set(guildId, new Map())
         let scores_guild = scores.get(guildId)
-        // console.log("scores_guild = " + scores_guild)
+        printData("scores_guild", scores_guild)
 
         for( let j = 0,length = rankings.length; j < length; j++ ) {
             let ranking = guild[ rankings[ j ] ]
             let members = Object.keys(ranking)
-            // console.log("members = " + members)
+            printData("members", members)
 
             let rankingName = rankings[j]
-            // console.log("rankingName = " + rankingName)
+            printData("rankingName", rankingName)
             scores_guild.set(rankingName, new Map())
             let scores_ranking = scores_guild.get(rankingName)
-            // console.log("scores_ranking = " + scores_ranking)
+            printData("scores_ranking", scores_ranking)
 
             for( let k = 0,length = members.length; k < length; k++ ) {
                 let score = ranking[members[k]]
-
                 let memberId = members[k]
-                // console.log("memberId = " + memberId)
-
-                // // console.log("score = " + score)
                 scores_ranking.set(memberId, score)
-
-                // // console.log("res : " + res)
             }
         }
     }
-
-    // console.log("scores loaded")
-    // save(scores)
     return scores
 }
 
