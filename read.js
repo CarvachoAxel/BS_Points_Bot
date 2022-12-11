@@ -42,6 +42,8 @@ function createScores(data)
             for( let k = 0,length = members.length; k < length; k++ ) {
                 let score = ranking[members[k]]
                 let memberId = members[k]
+                printData("score", score)
+                printData("memberId", memberId)
                 scores_ranking.set(memberId, score)
             }
         }
