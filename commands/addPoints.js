@@ -53,6 +53,9 @@ module.exports = (guildId, scores, message,words, rankings_links, rankings_title
         if (events.get(words[1]) == undefined)
             return message.reply("Error! You need to mention an existing ranking!\nTry : b!add <ranking> <number of points> <@nobody> <@some cool guy> ... <@another one>")
 
+        console.log("addPoints")
+        console.log(message)
+        console.log(message.guild)
         if (rankings_links.get(message.guild.id) == undefined)
             rankings_links.set(message.guild.id, new Map())
         let guild_rankings_links = rankings_links.get(message.guild.id)

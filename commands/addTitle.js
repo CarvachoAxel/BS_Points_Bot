@@ -5,6 +5,10 @@ module.exports = (message, scores, title, nbpts, ranking, rankings_titles) => {
     if (!message.member.roles.find(r => r.name === "Admin"))
         return message.reply("Only an Admin can do that! You can't fool probot that easily :P")
 
+    console.log("addTitle")
+    console.log(title)
+    console.log(message)
+    console.log(message.guild)
     let titleId = title.id
     let rankings = scores.get(message.guild.id)
     if (rankings == undefined)
