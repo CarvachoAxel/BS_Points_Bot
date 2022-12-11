@@ -10,9 +10,23 @@ const User = require('./model/User.js')
 
 client.login(process.env.BOT_TOKEN)
 
+function printData(name, data) {
+  console.log(`### begin ${name}`);
+  console.log(data);
+  console.log(`### end ${name}`);
+}
+
+console.log("#####\nEn index.js\n#####")
+
 var scores = read();
+printData("scores", scores)
+
 var rankings_links = readRankingLinks();
+printData("rankings_links", rankings_links)
+
 var rankings_titles = readTitles();
+printData("rankings_titles", rankings_titles)
+
 // var scores = new Map()
 // var rankings_titles = new Map()
 // var rankings_links = new Map();
