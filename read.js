@@ -45,11 +45,13 @@ function createScores(data)
                 printData("score", score)
                 printData("memberId", memberId)
                 scores_ranking.set(memberId, score)
-                console.log(`Después de: scores_ranking.set con j = ${k}`)
+                console.log(`Después de: scores_ranking.set con k = ${k}, j = ${j}, i = ${i}`)
             }
-            console.log(`En for con j = ${j}`)
+            console.log(`Fin de for con j = ${j}, i = ${i}`)
         }
+        console.log(`Fin de for con i = ${i}`)
     }
+    console.log("return scores")
     return scores
 }
 
