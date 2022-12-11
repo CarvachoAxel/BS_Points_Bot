@@ -22,6 +22,8 @@ var getPointsForRoles = require('../commands/getPointsForRoles')
 module.exports = (client, scores, rankings_links, rankings_titles, message) => {
   if (message.content.startsWith('b!') ||message.content.startsWith('B!')) {
     var words = message.content.split(' ');
+    console.log("[Message.js]: message");
+    console.log(message);
     switch (words[0].toLowerCase())
     {
       case 'b!ping':
